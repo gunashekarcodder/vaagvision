@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 25% 97%;
+    --foreground: 150 30% 12%;
+
+    --card: 40 20% 95%;
+    --card-foreground: 150 30% 12%;
+
+    --popover: 40 25% 97%;
+    --popover-foreground: 150 30% 12%;
+
+    --primary: 152 45% 28%;
+    --primary-foreground: 40 25% 97%;
+
+    --secondary: 30 35% 45%;
+    --secondary-foreground: 40 25% 97%;
+
+    --muted: 40 15% 90%;
+    --muted-foreground: 150 10% 40%;
+
+    --accent: 42 85% 55%;
+    --accent-foreground: 150 30% 12%;
+
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 40 25% 97%;
+
+    --border: 40 15% 85%;
+    --input: 40 15% 85%;
+    --ring: 152 45% 28%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --zone-green: 142 60% 45%;
+    --zone-yellow: 42 85% 55%;
+    --zone-red: 0 65% 50%;
+
+    --earth-warm: 30 35% 45%;
+    --earth-deep: 25 40% 25%;
+    --leaf-light: 120 30% 75%;
+    --leaf-fresh: 142 50% 50%;
+
+    --hero-gradient: linear-gradient(135deg, hsl(152 45% 28%), hsl(120 30% 35%), hsl(42 85% 55% / 0.3));
+    --card-gradient: linear-gradient(180deg, hsl(40 25% 97%), hsl(40 20% 93%));
+    --zone-green-gradient: linear-gradient(135deg, hsl(142 60% 45%), hsl(152 45% 35%));
+    --zone-yellow-gradient: linear-gradient(135deg, hsl(42 85% 55%), hsl(30 70% 50%));
+    --zone-red-gradient: linear-gradient(135deg, hsl(0 65% 50%), hsl(15 55% 40%));
+
+    --shadow-soft: 0 4px 20px hsl(150 20% 20% / 0.08);
+    --shadow-card: 0 8px 30px hsl(150 20% 20% / 0.1);
+    --shadow-elevated: 0 16px 50px hsl(150 20% 20% / 0.15);
+
+    --font-display: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .text-gradient-hero {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--zone-green)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-hero-gradient {
+    background: var(--hero-gradient);
+  }
+
+  .bg-zone-green {
+    background: var(--zone-green-gradient);
+  }
+
+  .bg-zone-yellow {
+    background: var(--zone-yellow-gradient);
+  }
+
+  .bg-zone-red {
+    background: var(--zone-red-gradient);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .glass-card {
+    @apply backdrop-blur-md border;
+    background: hsl(var(--card) / 0.8);
+  }
+
+  .zone-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold;
+  }
+
+  .zone-badge-green {
+    @apply zone-badge;
+    background: hsl(var(--zone-green) / 0.15);
+    color: hsl(var(--zone-green));
+  }
+
+  .zone-badge-yellow {
+    @apply zone-badge;
+    background: hsl(var(--zone-yellow) / 0.15);
+    color: hsl(var(--zone-yellow));
+  }
+
+  .zone-badge-red {
+    @apply zone-badge;
+    background: hsl(var(--zone-red) / 0.15);
+    color: hsl(var(--zone-red));
+  }
+}
+
+/* Leaflet overrides */
+.leaflet-container {
+  font-family: var(--font-body) !important;
+  border-radius: var(--radius);
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow-card) !important;
+}
